@@ -1,10 +1,135 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Matthias</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matthias | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Montserrat:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Welcome to my site</h1>
+  <!-- ====== BANNER / NAV ====== -->
+  <header class="banner">
+    <div class="brand">Matthias</div>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#cv">CV</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button id="mode-toggle" class="mode-btn" aria-label="Toggle theme"></button>
+  </header>
+
+  <!-- ====== HOME ====== -->
+  <section id="home" class="home section">
+    <div class="photo-border">
+        <div class="photo-inner">
+            <img src="assets/profile.jpg" alt="Matthias photo" class="profile-pic" />
+        </div>
+    </div>
+    <h1 class="typing-heading">I am <span id="typing"></span><span class="cursor">|</span></h1>
+    <p class="about-text">
+      I am a Biomedical Engineering student with a passion for making others’ lives easier through innovation.
+      My work focuses on combining technology, creativity, and problem-solving to develop practical solutions that
+      improve everyday life.
+    </p>
+  </section>
+
+  <!-- ====== CV ====== -->
+  <section id="cv" class="section">
+    <h2 class="section-title">Curriculum Vitae</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2020–2024</div>
+        <div class="timeline-content">
+          <h3>Loyang View Secondary School</h3>
+          <p>2× National Biology Olympiad, National Chemistry Olympiad, VJC Amazing Race, EXCO of the Basketball Team</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Currently</div>
+        <div class="timeline-content">
+          <h3>Nanyang Polytechnic</h3>
+          <p>Biomedical Engineering Student</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SKILLS ====== -->
+  <section id="skills" class="section">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3>Technical</h3>
+        <ul>
+          <li>Biomedical Device Design</li>
+          <li>Data Analysis & Interpretation</li>
+          <li>Programming: Python, JS, CSS, HTML</li>
+          <li>3D Modelling</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h3>Soft Skills</h3>
+        <ul>
+          <li>Team Collaboration</li>
+          <li>Adaptability</li>
+          <li>Creative Problem Solving</li>
+          <li>Effective Communication</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PROJECTS ====== -->
+  <section id="projects" class="section">
+    <h2 class="section-title">Projects</h2>
+    <div class="project-grid">
+      <a href="#" class="project-card">
+        <img src="assets/project1.jpg" alt="Project 1" />
+        <p>Heel Haven – Pressure Relief Device</p>
+      </a>
+      <a href="#" class="project-card">
+        <img src="assets/project2.jpg" alt="Project 2" />
+        <p>Smart Health Monitor</p>
+      </a>
+      <a href="#" class="project-card">
+        <img src="assets/project3.jpg" alt="Project 3" />
+        <p>IoT Fall Detection System</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- ====== ACHIEVEMENTS ====== -->
+  <section id="achievements" class="section">
+    <h2 class="section-title">Achievements</h2>
+    <ul class="achievements-list">
+      <li>Biology Olympiad: 2× Participation Award</li>
+      <li>Chemistry Olympiad: Participation Award</li>
+      <li>VJC Amazing Race: Participation Award</li>
+      <li>2× National School Games B Division</li>
+      <li>National School Games C Division</li>
+    </ul>
+  </section>
+
+  <!-- ====== CONTACT ====== -->
+  <section id="contact" class="section">
+    <h2 class="section-title">Contact Me</h2>
+    <div class="contact-buttons">
+      <a href="https://wa.me/65XXXXXXXX" class="btn">WhatsApp</a>
+      <a href="https://linkedin.com/in/yourprofile" class="btn">LinkedIn</a>
+      <a href="mailto:your@email.com" class="btn">Email Me</a>
+      <a href="assets/Resume.pdf" class="btn">View Resume</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 Matthias. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
 
