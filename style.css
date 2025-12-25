@@ -295,16 +295,15 @@ body {
 }
 
 .footer-contact {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  /* Footer flows at the end of the page (not fixed) so mobile users
+     need to scroll to reach it. Keep a clear separation from content. */
+  position: static;
   background: var(--background);
   color: var(--secondary);
   padding: 1.5rem;
   text-align: center;
   border-top: 2px solid var(--primary);
-  z-index: 9;
+  margin-top: 2.5rem;
 }
 
 /* ========================
@@ -376,4 +375,45 @@ body {
     text-align: center;
     padding: 8px 12px;
   }
+}
+
+/* Additional mobile tweaks for better phone layout */
+@media (max-width: 767px) {
+  .banner {
+    padding: 0.6rem 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .brand { font-size: var(--step-1); }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35rem;
+    width: 100%;
+    padding-top: 0.25rem;
+  }
+
+  .nav-links a {
+    margin: 0.15rem;
+    padding: 6px 8px;
+    font-size: 0.95rem;
+  }
+
+  .section { padding: 2rem 1rem; }
+
+  .photo-border { width: 130px; height: 130px; border-width: 4px; }
+  .photo-inner { width: 110px; height: 110px; }
+
+  .typing-heading { font-size: 1.4rem; }
+
+  .about-text { padding: 0 0.6rem; max-width: 95%; }
+
+  .project-card img { height: 120px; }
+
+  /* Ensure footer has room and is readable on small screens */
+  .footer-contact { padding: 1.25rem; font-size: 0.95rem; }
 }
