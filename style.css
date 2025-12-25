@@ -338,6 +338,9 @@ body {
   .modal-nav.prev, .modal-nav.next { display: none; }
 }
 
+/* Hide slide markup inside project cards (used by JS to build modal) */
+.project-card .slides { display: none; }
+
 /* ========================
    RESPONSIVE TYPE SCALE
    ======================== */
