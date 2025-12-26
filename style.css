@@ -701,7 +701,7 @@ body.modal-open {
 }
 
 .highlights-card {
-  border: 2px solid #5C5C5C;
+  border: 2px solid #999999;
   border-radius: 1rem;
   padding: 1rem 1rem;
   background: var(--background);
