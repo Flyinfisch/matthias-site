@@ -312,13 +312,72 @@ body {
 /* Modal styles */
 .modal { display: none; position: fixed; inset: 0; z-index: 1000; align-items: center; justify-content: center; }
 .modal.open { display: flex; }
-.modal-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; padding: 2rem; }
-.modal-content { position: relative; max-width: 900px; width: 100%; background: var(--background); color: var(--secondary); border-radius: 10px; overflow: hidden; display:flex; align-items:center; gap:1rem; padding: 1rem 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.25); }
+.modal-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; padding: 1rem; }
+.modal-content {
+  position: relative;
+  width: min(95vw, 1100px);
+  max-height: 85vh;
+  background: var(--background);
+  color: var(--secondary);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 1rem;
+  padding: 1rem 3rem; /* extra horizontal padding so nav buttons don't overlap text */
+  border: 2px solid var(--primary);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
 
 /* Body area that fades */
 .modal-body { flex: 1 1 auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
-.modal-image { max-width: 100%; height: 360px; object-fit: cover; border-radius: 6px; margin-bottom: 0.75rem; }
-.modal-caption { font-size: var(--step-0); color: var(--secondary); }
+.modal-image {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: calc(70vh);
+  object-fit: contain;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+.modal-caption { font-size: var(--step-0); color: var(--secondary); text-align: center; width: 100%; }
+
+/* Ensure modal body takes full modal width and centers content */
+.modal-body { width: 100%; display: flex; flex-direction: row; align-items: center; gap: 1rem; padding: 0.25rem 0; }
+
+/* Add subtle inner spacing for images in the modal */
+.modal-content img { border: 1px solid rgba(0,0,0,0.06); display:block; margin: 0 auto; }
+
+/* modal layout specifics: caption + image columns */
+.modal-caption { flex: 0 0 40%; overflow: auto; padding-right: 0.5rem; text-align: center; }
+
+.modal-caption h3 { text-align: center; margin-top: 0; }
+/* When modal contains only the caption (no image), center-and-widen it */
+.modal-body > .modal-caption:only-child {
+  flex: none;
+  width: min(84%, 740px);
+  margin: 0 auto;
+  padding: 0 0.5rem;
+}
+.modal-image { flex: 1 1 60%; width: 100%; height: auto; max-height: calc(80vh - 60px); object-fit: contain; }
+
+/* Nav buttons sit outside the content area but inside modal-content */
+.modal-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.08); border: none; padding: 0.6rem 0.9rem; border-radius: 6px; cursor: pointer; font-size: 1.25rem; color: var(--secondary); z-index: 40; }
+.modal-nav.prev { left: 8px; }
+.modal-nav.next { right: 8px; }
+
+/* Close button should be above other controls */
+.modal-close { z-index: 45; }
+
+@media (max-width: 767px) {
+  .modal-content { width: min(96vw, 720px); flex-direction: column; padding: 1rem; }
+  .modal-body { flex-direction: column; }
+  .modal-caption { flex: none; width: 100%; }
+  .modal-image { max-height: 50vh; }
+  .modal-nav.prev, .modal-nav.next { display: none; }
+}
 
 /* Nav / close */
 .modal-close { position: absolute; top: 8px; right: 10px; background: transparent; border: none; font-size: 2rem; color: var(--secondary); cursor: pointer; }
