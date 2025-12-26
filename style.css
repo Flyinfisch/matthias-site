@@ -348,7 +348,7 @@ body {
 .modal-body { width: 100%; display: flex; flex-direction: row; align-items: center; gap: 1rem; padding: 0.25rem 0; }
 
 /* Add subtle inner spacing for images in the modal */
-.modal-content img { border: 1px solid rgba(0,0,0,0.06); display:block; margin: 0 auto; }
+.modal-content img, .modal-content video { border: 1px solid rgba(0,0,0,0.06); display:block; margin: 0 auto; }
 
 /* modal layout specifics: caption + image columns */
 .modal-caption { flex: 0 0 40%; overflow: auto; padding-right: 0.5rem; text-align: center; }
@@ -493,4 +493,171 @@ body {
     justify-content: center;
     z-index: 20;
   }
+}
+
+/* ========================
+   CV ENHANCEMENTS
+   ======================== */
+.cv-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: var(--step-1);
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.cv-summary {
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+  border: 2px solid var(--primary);
+  border-radius: 1rem;
+  padding: 1.25rem 1.25rem;
+}
+
+.cv-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+}
+
+.cv-tag {
+  border: 1px solid var(--primary);
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+}
+
+.cv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* project highlights cards */
+.cv-projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.cv-card {
+  border: 2px solid var(--primary);
+  border-radius: 1rem;
+  padding: 1rem 1rem;
+  text-align: left;
+  background: var(--background);
+}
+
+.cv-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.cv-card ul {
+  padding-left: 1.1rem;
+  margin: 0;
+}
+
+.cv-card li {
+  margin-bottom: 0.5rem;
+}
+
+/* leadership list */
+.cv-list {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.cv-list-item {
+  border: 2px solid var(--primary);
+  border-radius: 1rem;
+  padding: 1rem 1rem;
+  background: var(--background);
+  text-align: left;
+}
+
+.cv-list-item h3 {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+}
+
+/* ========================
+   HIGHLIGHTS PAGE
+   ======================== */
+.highlights-wrap {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.highlights-intro {
+  max-width: 820px;
+  margin: 0 auto 1.25rem;
+  text-align: center;
+  line-height: 1.85;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.highlights-card {
+  border: 2px solid var(--primary);
+  border-radius: 1rem;
+  padding: 1rem 1rem;
+  background: var(--background);
+  text-align: left;
+}
+
+.highlights-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--primary);
+  margin-bottom: 0.6rem;
+}
+
+.highlights-label {
+  font-weight: 600;
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+
+.highlights-spaced {
+  margin-top: 0.9rem;
+}
+
+.highlights-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.highlights-list li {
+  margin: 0.5rem 0;
+  line-height: 1.75;
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.highlights-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+}
+
+.highlights-note {
+  margin-top: 0.9rem;
+  line-height: 1.85;
+  opacity: 0.95;
 }

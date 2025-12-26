@@ -15,7 +15,7 @@
       <a href="index.html">Home</a>
       <a href="cv.html">CV</a>
       <a href="projects.html">Projects</a>
-      <a href="achievements.html">Achievements</a>
+      <a href="highlights.html">Highlights</a>
     </nav>
     <button id="mode-toggle" class="mode-btn" aria-label="Toggle theme">◐</button>
   </header>
@@ -23,33 +23,85 @@
   <!-- ====== PROJECTS ====== -->
   <section class="section">
     <h2 class="section-title">Projects</h2>
+
     <div class="project-grid">
+      <!-- Project 1 -->
       <a href="#" class="project-card" data-index="0">
         <img src="assets/Kitready_Projectimage.jpg" alt="Kit Ready thumbnail" />
         <p>Kit Ready</p>
+
         <div class="slides" aria-hidden="true">
-          <div class="slide"><div class="modal-caption">
-            <h3>Kit Ready</h3>
-            <p>KitReady is a digital inventory and alert system designed to help schools manage first-aid supplies more efficiently. By using QR codes and a simple online dashboard, staff can log item usage in seconds and receive timely notifications when supplies run low.</p>
-            <p>The idea came from observing how first-aid kits are often checked manually only during audits or emergencies, leading to expired, missing, or insufficient items when they are needed most. KitReady was created to reduce this risk by making stock tracking simple, proactive, and reliable, ensuring readiness at all times without adding administrative burden.</p>
-          </div></div>
-          <div class="slide"><img src="assets/Kitready_showcaseimage1.jpg" alt="KitReady - QR and form" /></div>
-          <div class="slide"><img src="assets/Kitready_showcaseimage2.jpg" alt="KitReady - dashboard screenshot" /></div>
-          <div class="slide"><img src="assets/Kitready_showcaseimage3.jpg" alt="KitReady - mobile flow" /></div>
+          <div class="slide">
+            <div class="modal-caption">
+              <h3>Kit Ready</h3>
+              <p>KitReady is a digital inventory and alert system designed to help schools manage first-aid supplies more efficiently. By using QR codes and a simple online dashboard, staff can log item usage in seconds and receive timely notifications when supplies run low.</p>
+              <p>The idea came from observing how first-aid kits are often checked manually only during audits or emergencies, leading to expired, missing, or insufficient items when they are needed most. KitReady was created to reduce this risk by making stock tracking simple, proactive, and reliable, ensuring readiness at all times without adding administrative burden.</p>
+            </div>
+          </div>
+
+          <div class="slide"><img src="assets/Kitready_showcaseimage1.jpg" alt="KitReady - QR and form" class="modal-image" /></div>
+          <div class="slide"><img src="assets/Kitready_showcaseimage2.jpg" alt="KitReady - dashboard screenshot" class="modal-image" /></div>
+          <div class="slide"><img src="assets/Kitready_showcaseimage3.jpg" alt="KitReady - mobile flow" class="modal-image" /></div>
         </div>
       </a>
+
+      <!-- Project 2 -->
       <a href="#" class="project-card" data-index="1">
-        <img src="assets/project2.jpg" alt="Project 2" />
-        <p>Smart Health Monitor</p>
+        <img src="assets/TT_Thumbnailimage.jpg" alt="Table Tennis Ball Launcher thumbnail" />
+        <p>Table Tennis Ball Launcher</p>
+
+        <div class="slides" aria-hidden="true">
+          <div class="slide">
+            <div class="modal-caption">
+              <h3>Table Tennis Ball Launcher</h3>
+              <p>Many table tennis players find it difficult to practise on their own, as effective training usually requires a partner to return shots. This makes it harder to train consistently and limits opportunities to develop timing, accuracy, and stroke control. To address this, we built a training machine that automatically returns balls at controlled speeds and angles, allowing players to practise anytime, maintain regular training routines, and focus on improving key skills independently.</p>
+            </div>
+          </div>
+
+          <div class="slide"><img src="assets/TT_showcaseimage.jpg" alt="Table Tennis Ball Launcher showcase image 1" class="modal-image" /></div>
+          <div class="slide"><img src="assets/TT_showcaseimage2.jpg" alt="Table Tennis Ball Launcher showcase image 2" class="modal-image" /></div>
+          <div class="slide"><img src="assets/TT_showcaseimage3.jpg" alt="Table Tennis Ball Launcher showcase image 3" class="modal-image" /></div>
+          <div class="slide"><img src="assets/TT_showcaseimage4.jpg" alt="Table Tennis Ball Launcher showcase image 4" class="modal-image" /></div>
+
+          <div class="slide">
+            <video class="modal-image" controls playsinline preload="metadata">
+              <source src="assets/TT_showcasevideo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
       </a>
+
+      <!-- Project 3 -->
       <a href="#" class="project-card" data-index="2">
-        <img src="assets/project3.jpg" alt="Project 3" />
-        <p>IoT Fall Detection System</p>
+        <img src="assets/HH_Thumbnailimage.jpg" alt="Heel Haven thumbnail" />
+        <p>Heel Haven</p>
+
+        <div class="slides" aria-hidden="true">
+          <div class="slide">
+            <div class="modal-caption">
+              <h3>Heel Haven</h3>
+              <p>
+                Heel Haven is an innovative heel off-loading device developed to prevent pressure injuries in bed-bound or immobile patients.
+                Recognising that prolonged heel pressure is a major contributor to pressure sores, the design focuses on fully elevating the heel
+                while maintaining comfort and stability. Its innovative structure combines targeted support with breathable, lightweight materials
+                to improve airflow and reduce heat and moisture build-up, offering a practical and user-friendly solution that enhances patient
+                comfort and supports proactive pressure injury prevention.
+              </p>
+            </div>
+          </div>
+
+          <div class="slide"><img src="assets/HH_showcaseimage.jpg" alt="Heel Haven showcase image 1" class="modal-image" /></div>
+          <div class="slide"><img src="assets/HH_showcaseimage2.jpg" alt="Heel Haven showcase image 2" class="modal-image" /></div>
+          <div class="slide"><img src="assets/HH_showcaseimage3.jpg" alt="Heel Haven showcase image 3" class="modal-image" /></div>
+          <div class="slide"><img src="assets/HH_showcaseimage4.jpg" alt="Heel Haven showcase image 4" class="modal-image" /></div>
+          <div class="slide"><img src="assets/HH_showcaseposter.jpg" alt="Heel Haven poster" class="modal-image" /></div>
+        </div>
       </a>
     </div>
   </section>
 
-  <!-- Modal for project preview -->
+  <!-- Modal for project preview (REQUIRED for clicks to work) -->
   <div id="project-modal" class="modal" aria-hidden="true" role="dialog" aria-label="Project preview">
     <div class="modal-overlay" data-close></div>
 
