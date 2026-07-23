@@ -1,6 +1,5 @@
 const story = document.querySelector(".story");
 const stage = document.querySelector(".story-stage");
-const pillar = document.querySelector(".pillar-body");
 const cards = [...document.querySelectorAll(".story-card")];
 const chapterNumber = document.querySelector("#chapter-number");
 const chapterTitle = document.querySelector("#chapter-title");
@@ -11,6 +10,7 @@ const modal = document.querySelector("#detail-modal");
 const modalContent = document.querySelector("#modal-content");
 const modalClose = modal.querySelector(".modal-close");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const saveData = navigator.connection?.saveData === true;
 
 let activeIndex = 0;
 let lastFocused = null;
@@ -20,6 +20,8 @@ let previousFrameTime = 0;
 let canvasWidth = 0;
 let canvasHeight = 0;
 let pixelRatio = 1;
+let animationFrameId = 0;
+let lastGalaxyDraw = 0;
 
 function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value));
@@ -34,7 +36,8 @@ function seededRandom(seed) {
 }
 
 const random = seededRandom(1827);
-const lightClusters = Array.from({ length: 72 }, () => ({
+const lightCount = saveData ? 24 : window.innerWidth < 760 ? 42 : 58;
+const lightClusters = Array.from({ length: lightCount }, () => ({
   x: random(),
   y: random(),
   size: 8 + random() * 34,
@@ -101,7 +104,6 @@ function renderStory(progress) {
   chapterNumber.textContent = String(activeIndex + 1).padStart(2, "0");
   chapterTitle.textContent = activeCard.dataset.title;
   progressFill.style.setProperty("--progress", `${progress * 100}%`);
-  pillar.style.setProperty("--pillar-shift", `${(progress * 500) % 100}px`);
 }
 
 function drawGlow(x, y, radius, hue, alpha) {
@@ -155,15 +157,28 @@ function animate(frameTime) {
   }
 
   renderStory(currentProgress);
-  drawGalaxy(frameTime, currentProgress);
-  requestAnimationFrame(animate);
+  const drawInterval = saveData || reduceMotion.matches ? 50 : 33;
+  if (frameTime - lastGalaxyDraw >= drawInterval) {
+    drawGalaxy(saveData ? 0 : frameTime, currentProgress);
+    lastGalaxyDraw = frameTime;
+  }
+  if (!document.hidden) animationFrameId = requestAnimationFrame(animate);
 }
 
 window.addEventListener("resize", resizeGalaxy);
 resizeGalaxy();
 readScrollProgress();
 currentProgress = targetProgress;
-requestAnimationFrame(animate);
+animationFrameId = requestAnimationFrame(animate);
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    cancelAnimationFrame(animationFrameId);
+    return;
+  }
+  previousFrameTime = 0;
+  animationFrameId = requestAnimationFrame(animate);
+});
 
 function openModal(id, trigger) {
   const template = document.querySelector(`#modal-${id}`);

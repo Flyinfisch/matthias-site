@@ -4,23 +4,69 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Matthias Ling — biomedical engineering, prototypes, leadership, and the story behind the work.">
+  <meta name="author" content="Matthias Ling">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#050611">
+  <meta name="color-scheme" content="dark">
   <title>Matthias Ling | A Story in Motion</title>
+  <link rel="canonical" href="https://matthias.ling.casa/">
+  <link rel="icon" href="assets/profile.webp" type="image/webp">
+  <link rel="manifest" href="site.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Matthias Ling">
+  <meta property="og:url" content="https://matthias.ling.casa/">
+  <meta property="og:title" content="Matthias Ling | Biomedical Engineering Portfolio">
+  <meta property="og:description" content="Practical devices, systems, and prototypes designed around better living.">
+  <meta property="og:image" content="https://matthias.ling.casa/assets/og-card.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Matthias Ling — biomedical engineering, prototypes, better living">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Matthias Ling | Biomedical Engineering Portfolio">
+  <meta name="twitter:description" content="Practical devices, systems, and prototypes designed around better living.">
+  <meta name="twitter:image" content="https://matthias.ling.casa/assets/og-card.webp">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://matthias.ling.casa/#website",
+          "url": "https://matthias.ling.casa/",
+          "name": "Matthias Ling | Biomedical Engineering Portfolio",
+          "description": "Practical devices, systems, and prototypes designed around better living.",
+          "inLanguage": "en"
+        },
+        {
+          "@type": "Person",
+          "@id": "https://matthias.ling.casa/#matthias",
+          "name": "Matthias Ling",
+          "url": "https://matthias.ling.casa/",
+          "email": "mailto:mataslinz@gmail.com",
+          "sameAs": ["https://www.linkedin.com/in/matthias-ling-4436673a0/"],
+          "knowsAbout": ["Biomedical engineering", "Medical device design", "Prototyping", "Python", "JavaScript", "3D modelling"],
+          "alumniOf": {"@type": "CollegeOrUniversity", "name": "Nanyang Polytechnic"}
+        }
+      ]
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <canvas id="galaxy-canvas" class="galaxy-canvas" aria-hidden="true"></canvas>
   <header class="site-header">
     <a class="wordmark" href="#start" aria-label="Back to the beginning">
       <span class="wordmark-dot"></span>
       ML
     </a>
-    <p class="chapter-readout"><span id="chapter-number">01</span> / <span id="chapter-title">Origin</span></p>
+    <p class="chapter-readout" aria-live="polite" aria-atomic="true"><span id="chapter-number">01</span> / <span id="chapter-title">Origin</span></p>
   </header>
 
-  <main>
+  <main id="main-content">
     <section id="start" class="hero">
       <div class="hero-grid" aria-hidden="true"></div>
       <p class="eyebrow">Biomedical engineering portfolio</p>
@@ -34,17 +80,6 @@
 
     <section id="story" class="story" aria-label="Matthias's portfolio story">
       <div class="story-stage">
-        <div class="atmosphere atmosphere-one" aria-hidden="true"></div>
-        <div class="atmosphere atmosphere-two" aria-hidden="true"></div>
-        <div class="pillar" aria-hidden="true">
-          <div class="pillar-cap pillar-cap-top"></div>
-          <div class="pillar-body">
-            <div class="pillar-seam"></div>
-            <div class="pillar-glow"></div>
-          </div>
-          <div class="pillar-cap pillar-cap-bottom"></div>
-        </div>
-
         <div class="orbit-label" aria-hidden="true">
           <span>SCROLL</span>
           <span>TO DESCEND</span>
@@ -67,7 +102,7 @@
               <span class="card-kicker">System design</span>
               <strong>KitReady</strong>
               <span class="card-summary">A QR-powered first-aid inventory system that keeps schools prepared.</span>
-              <span class="card-media"><img src="assets/Kitready_Projectimage.webp" alt=""></span>
+              <span class="card-media"><img src="assets/Kitready_Projectimage.webp" alt="" loading="lazy" decoding="async"></span>
               <span class="card-action">View project ↗</span>
             </button>
           </article>
@@ -78,7 +113,7 @@
               <span class="card-kicker">Mechanical prototyping</span>
               <strong>Train without waiting</strong>
               <span class="card-summary">A table-tennis launcher designed for consistent, independent practice.</span>
-              <span class="card-media"><img src="assets/TT_Thumbnailimage.webp" alt=""></span>
+              <span class="card-media"><img src="assets/TT_Thumbnailimage.webp" alt="" loading="lazy" decoding="async"></span>
               <span class="card-action">View project ↗</span>
             </button>
           </article>
@@ -89,7 +124,7 @@
               <span class="card-kicker">Patient-centred design</span>
               <strong>Heel Haven</strong>
               <span class="card-summary">A breathable heel off-loading concept made to prevent pressure injuries.</span>
-              <span class="card-media"><img src="assets/HH_Thumbnailimage.webp" alt=""></span>
+              <span class="card-media"><img src="assets/HH_Thumbnailimage.webp" alt="" loading="lazy" decoding="async"></span>
               <span class="card-action">View project ↗</span>
             </button>
           </article>
@@ -171,10 +206,10 @@
       <p class="detail-lead">A digital inventory and alert system for school first-aid supplies.</p>
     </div>
     <div class="detail-gallery">
-      <img src="assets/Kitready_Projectimage.webp" alt="KitReady project">
-      <img src="assets/Kitready_showcaseimage1.webp" alt="KitReady QR code and form">
-      <img src="assets/Kitready_showcaseimage2.webp" alt="KitReady inventory dashboard">
-      <img src="assets/Kitready_showcaseimage3.webp" alt="KitReady mobile workflow">
+      <img src="assets/Kitready_Projectimage.webp" alt="KitReady project" loading="lazy" decoding="async">
+      <img src="assets/Kitready_showcaseimage1.webp" alt="KitReady QR code and form" loading="lazy" decoding="async">
+      <img src="assets/Kitready_showcaseimage2.webp" alt="KitReady inventory dashboard" loading="lazy" decoding="async">
+      <img src="assets/Kitready_showcaseimage3.webp" alt="KitReady mobile workflow" loading="lazy" decoding="async">
     </div>
     <div class="detail-copy">
       <h3>The problem</h3>
@@ -191,10 +226,10 @@
       <p class="detail-lead">A training partner that is ready whenever the player is.</p>
     </div>
     <div class="detail-gallery">
-      <img src="assets/TT_showcaseimage.webp" alt="Table tennis ball launcher">
-      <img src="assets/TT_showcaseimage2.webp" alt="Launcher mechanism">
-      <img src="assets/TT_showcaseimage3.webp" alt="Launcher prototype">
-      <img src="assets/TT_showcaseimage4.webp" alt="Launcher testing">
+      <img src="assets/TT_showcaseimage.webp" alt="Table tennis ball launcher" loading="lazy" decoding="async">
+      <img src="assets/TT_showcaseimage2.webp" alt="Launcher mechanism" loading="lazy" decoding="async">
+      <img src="assets/TT_showcaseimage3.webp" alt="Launcher prototype" loading="lazy" decoding="async">
+      <img src="assets/TT_showcaseimage4.webp" alt="Launcher testing" loading="lazy" decoding="async">
     </div>
     <div class="detail-copy">
       <h3>The problem</h3>
@@ -214,11 +249,11 @@
       <p class="detail-lead">Pressure relief designed around comfort, airflow, and stability.</p>
     </div>
     <div class="detail-gallery">
-      <img src="assets/HH_showcaseimage.webp" alt="Heel Haven prototype">
-      <img src="assets/HH_showcaseimage2.webp" alt="Heel Haven design detail">
-      <img src="assets/HH_showcaseimage3.webp" alt="Heel Haven testing">
-      <img src="assets/HH_showcaseimage4.webp" alt="Heel Haven final concept">
-      <img src="assets/HH_showcaseposter.webp" alt="Heel Haven project poster">
+      <img src="assets/HH_showcaseimage.webp" alt="Heel Haven prototype" loading="lazy" decoding="async">
+      <img src="assets/HH_showcaseimage2.webp" alt="Heel Haven design detail" loading="lazy" decoding="async">
+      <img src="assets/HH_showcaseimage3.webp" alt="Heel Haven testing" loading="lazy" decoding="async">
+      <img src="assets/HH_showcaseimage4.webp" alt="Heel Haven final concept" loading="lazy" decoding="async">
+      <img src="assets/HH_showcaseposter.webp" alt="Heel Haven project poster" loading="lazy" decoding="async">
     </div>
     <div class="detail-copy">
       <h3>The problem</h3>
@@ -265,6 +300,6 @@
     </div>
   </template>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
