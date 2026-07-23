@@ -1,198 +1,117 @@
-/* =====================
-   LIGHT / DARK MODE
-   ===================== */
-const toggleBtn = document.getElementById('mode-toggle');
-const root = document.documentElement;
+const story = document.querySelector(".story");
+const stage = document.querySelector(".story-stage");
+const pillar = document.querySelector(".pillar-body");
+const cards = [...document.querySelectorAll(".story-card")];
+const chapterNumber = document.querySelector("#chapter-number");
+const chapterTitle = document.querySelector("#chapter-title");
+const progressFill = document.querySelector("#progress-fill");
+const modal = document.querySelector("#detail-modal");
+const modalContent = document.querySelector("#modal-content");
+const modalClose = modal.querySelector(".modal-close");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-function setTheme(mode) {
-  root.setAttribute('data-theme', mode);
-  localStorage.setItem('theme', mode);
-  toggleBtn.textContent = mode === 'dark' ? '☀️' : '🌙';
+let activeIndex = 0;
+let lastFocused = null;
+let ticking = false;
+
+function clamp(value, min, max) {
+  return Math.min(max, Math.max(min, value));
 }
 
-toggleBtn.addEventListener('click', () => {
-  const current = root.getAttribute('data-theme');
-  setTheme(current === 'dark' ? 'light' : 'dark');
+function updateStory() {
+  ticking = false;
+  const rect = story.getBoundingClientRect();
+  const scrollable = story.offsetHeight - stage.offsetHeight;
+  const progress = clamp(-rect.top / Math.max(scrollable, 1), 0, 1);
+  const exactStep = progress * (cards.length - 1);
+  const orbitRadius = Math.min(window.innerWidth * (window.innerWidth < 760 ? 0.34 : 0.28), 420);
+
+  activeIndex = clamp(Math.round(exactStep), 0, cards.length - 1);
+
+  cards.forEach((card, index) => {
+    const delta = index - exactStep;
+    const angle = delta * 1.16;
+    const distance = Math.abs(delta);
+    const x = Math.sin(angle) * orbitRadius;
+    const y = delta * Math.min(window.innerHeight * 0.52, 470);
+    const depth = Math.cos(angle) * 170 - 170;
+    const focus = Math.max(0, 1 - distance);
+    const scale = clamp(0.62 + focus * 0.53 - distance * 0.035, 0.48, 1.15);
+    const opacity = clamp(1.12 - distance * 0.36, 0, 1);
+    const blur = Math.max(0, distance - 1.1) * 1.8;
+
+    card.style.setProperty("--x", `${x}px`);
+    card.style.setProperty("--y", `${y}px`);
+    card.style.setProperty("--depth", `${depth}px`);
+    card.style.setProperty("--scale", scale.toFixed(3));
+    card.style.setProperty("--opacity", opacity.toFixed(3));
+    card.style.setProperty("--blur", `${blur.toFixed(2)}px`);
+    card.style.zIndex = String(100 - Math.round(distance * 10));
+    card.classList.toggle("is-active", index === activeIndex);
+    card.classList.toggle("is-near", distance < 1.15);
+    card.setAttribute("aria-hidden", distance > 1.15 ? "true" : "false");
+    card.querySelector("button").tabIndex = distance < 1.15 ? 0 : -1;
+  });
+
+  const activeCard = cards[activeIndex];
+  chapterNumber.textContent = String(activeIndex + 1).padStart(2, "0");
+  chapterTitle.textContent = activeCard.dataset.title;
+  progressFill.style.setProperty("--progress", `${progress * 100}%`);
+  pillar.style.setProperty("--pillar-shift", `${(progress * 500) % 100}px`);
+}
+
+function requestStoryUpdate() {
+  if (!ticking) {
+    ticking = true;
+    requestAnimationFrame(updateStory);
+  }
+}
+
+window.addEventListener("scroll", requestStoryUpdate, { passive: true });
+window.addEventListener("resize", requestStoryUpdate);
+updateStory();
+
+function openModal(id, trigger) {
+  const template = document.querySelector(`#modal-${id}`);
+  if (!template) return;
+  lastFocused = trigger;
+  modalContent.replaceChildren(template.content.cloneNode(true));
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+  modalContent.scrollTop = 0;
+  modalClose.focus();
+}
+
+function closeModal() {
+  modal.classList.remove("is-open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+  modalContent.replaceChildren();
+  lastFocused?.focus();
+}
+
+document.querySelectorAll("[data-modal]").forEach((button) => {
+  button.addEventListener("click", () => openModal(button.dataset.modal, button));
 });
 
-const savedTheme = localStorage.getItem('theme') || 'light';
-setTheme(savedTheme);
+modal.querySelectorAll("[data-close-modal]").forEach((button) => button.addEventListener("click", closeModal));
 
-/* =====================
-   TYPING ANIMATION
-   ===================== */
-const words = ['Matthias', 'innovative', 'curious', 'driven'];
-const typingElement = document.getElementById('typing');
-const cursor = document.querySelector('.cursor');
-
-let wordIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-
-function typeEffect() {
-  const currentWord = words[wordIndex];
-  typingElement.textContent = currentWord.substring(0, charIndex);
-
-  let speed = isDeleting ? 60 : 120;
-  cursor.classList.remove('fast-blink');
-
-  if (!isDeleting && charIndex < currentWord.length) {
-    charIndex++;
-  } else if (!isDeleting && charIndex === currentWord.length) {
-    cursor.classList.add('fast-blink');
-    isDeleting = true;
-    speed = 1500;
-  } else if (isDeleting && charIndex > 0) {
-    charIndex--;
-  } else if (isDeleting && charIndex === 0) {
-    cursor.classList.add('fast-blink');
-    isDeleting = false;
-    wordIndex = (wordIndex + 1) % words.length;
-    speed = 500;
-  }
-
-  setTimeout(typeEffect, speed);
-}
-
-document.addEventListener('DOMContentLoaded', typeEffect);
-
-/* =====================
-   PROJECT MODAL + BODY SCROLL LOCK
-   ===================== */
-document.addEventListener('DOMContentLoaded', () => {
-  const cards = Array.from(document.querySelectorAll('.project-card'));
-  const modal = document.getElementById('project-modal');
-  const modalBody = modal.querySelector('.modal-body');
-  const btnClose = modal.querySelector('.modal-close');
-  const btnPrev = modal.querySelector('[data-prev]');
-  const btnNext = modal.querySelector('[data-next]');
-  const overlay = modal.querySelector('.modal-overlay');
-
-  let currentSlides = [];
-  let currentSlide = 0;
-
-  // iOS-safe scroll lock
-  let lockedScrollY = 0;
-
-  function lockBackgroundScroll() {
-    lockedScrollY = window.scrollY || document.documentElement.scrollTop || 0;
-
-    document.body.classList.add('modal-open');
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${lockedScrollY}px`;
-    document.body.style.left = '0';
-    document.body.style.right = '0';
-    document.body.style.width = '100%';
-  }
-
-  function unlockBackgroundScroll() {
-    document.body.classList.remove('modal-open');
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.left = '';
-    document.body.style.right = '';
-    document.body.style.width = '';
-
-    window.scrollTo(0, lockedScrollY);
-  }
-
-  function buildSlidesFromCard(card) {
-    const slideEls = Array.from(card.querySelectorAll('.slide'));
-    if (slideEls.length) return slideEls.map(el => el.innerHTML);
-
-    // fallback
-    const slides = [];
-    const text = card.querySelector('p');
-    if (text) slides.push(`<div class="modal-caption">${text.innerHTML}</div>`);
-    const img = card.querySelector('img');
-    if (img) slides.push(`<img src="${img.src}" alt="${img.alt || ''}" class="modal-image">`);
-    return slides;
-  }
-
-  function renderSlide(index, animate = true) {
-    if (!currentSlides.length) return;
-    index = (index + currentSlides.length) % currentSlides.length;
-    currentSlide = index;
-
-    const newContent = currentSlides[index];
-
-    if (!animate) {
-      modalBody.innerHTML = newContent;
-      modalBody.classList.add('fade-in');
-      return;
+document.addEventListener("keydown", (event) => {
+  if (!modal.classList.contains("is-open")) return;
+  if (event.key === "Escape") closeModal();
+  if (event.key === "Tab") {
+    const focusable = [...modal.querySelectorAll("button, a, video[controls]")];
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
     }
-
-    modalBody.classList.remove('fade-in');
-    modalBody.classList.add('fade-out');
-
-    setTimeout(() => {
-      modalBody.innerHTML = newContent;
-      modalBody.classList.remove('fade-out');
-      modalBody.classList.add('fade-in');
-    }, 200);
   }
-
-  function openModalWithCard(card) {
-    currentSlides = buildSlidesFromCard(card);
-    if (!currentSlides.length) return;
-
-    renderSlide(0, false);
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden', 'false');
-
-    lockBackgroundScroll();
-
-    setTimeout(() => modalBody.classList.add('fade-in'), 10);
-    btnClose.focus();
-  }
-
-  function closeModal() {
-    modalBody.classList.remove('fade-in');
-    modalBody.classList.add('fade-out');
-
-    setTimeout(() => {
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden', 'true');
-      modalBody.classList.remove('fade-out');
-      modalBody.innerHTML = '';
-      currentSlides = [];
-      currentSlide = 0;
-
-      unlockBackgroundScroll();
-    }, 180);
-  }
-
-  // Open on card click
-  cards.forEach((card) => {
-    card.addEventListener('click', (e) => {
-      e.preventDefault();
-      openModalWithCard(card);
-    });
-  });
-
-  // Controls
-  btnClose.addEventListener('click', closeModal);
-
-  btnPrev.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    renderSlide(currentSlide - 1, true);
-  });
-
-  btnNext.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    renderSlide(currentSlide + 1, true);
-  });
-
-  // Close on overlay click
-  overlay.addEventListener('click', closeModal);
-
-  // Keyboard
-  document.addEventListener('keydown', (e) => {
-    if (!modal.classList.contains('open')) return;
-    if (e.key === 'Escape') closeModal();
-    if (e.key === 'ArrowLeft') renderSlide(currentSlide - 1, true);
-    if (e.key === 'ArrowRight') renderSlide(currentSlide + 1, true);
-  });
 });
+
+reduceMotion.addEventListener?.("change", requestStoryUpdate);

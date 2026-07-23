@@ -1,52 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matthias | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Montserrat:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Matthias Ling — biomedical engineering, prototypes, leadership, and the story behind the work.">
+  <title>Matthias Ling | A Story in Motion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- ====== BANNER / NAV ====== -->
-  <header class="banner">
-    <div class="brand">Matthias</div>
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="cv.html">CV</a>
-      <a href="projects.html">Projects</a>
-      <a href="highlights.html">Highlights</a>
-    </nav>
-    <button id="mode-toggle" class="mode-btn" aria-label="Toggle theme">◐</button>
+  <header class="site-header">
+    <a class="wordmark" href="#start" aria-label="Back to the beginning">
+      <span class="wordmark-dot"></span>
+      ML
+    </a>
+    <p class="chapter-readout"><span id="chapter-number">01</span> / <span id="chapter-title">Origin</span></p>
   </header>
 
-  <!-- ====== HOME ====== -->
-  <section class="home section">
-    <div class="photo-border">
-      <div class="photo-inner">
-        <img src="assets/profile.jpg" alt="Portrait of Matthias" class="profile-pic">
+  <main>
+    <section id="start" class="hero">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <p class="eyebrow">Biomedical engineering portfolio</p>
+      <h1>Built around<br><em>better living.</em></h1>
+      <p class="hero-copy">I’m Matthias. I turn everyday problems into practical devices, systems, and prototypes.</p>
+      <a class="scroll-cue" href="#story">
+        <span>Descend through my story</span>
+        <span class="scroll-line"></span>
+      </a>
+    </section>
+
+    <section id="story" class="story" aria-label="Matthias's portfolio story">
+      <div class="story-stage">
+        <div class="atmosphere atmosphere-one" aria-hidden="true"></div>
+        <div class="atmosphere atmosphere-two" aria-hidden="true"></div>
+
+        <div class="pillar" aria-hidden="true">
+          <div class="pillar-cap pillar-cap-top"></div>
+          <div class="pillar-body">
+            <div class="pillar-seam"></div>
+            <div class="pillar-glow"></div>
+          </div>
+          <div class="pillar-cap pillar-cap-bottom"></div>
+        </div>
+
+        <div class="orbit-label" aria-hidden="true">
+          <span>SCROLL</span>
+          <span>TO DESCEND</span>
+        </div>
+
+        <div id="orbit" class="orbit">
+          <article class="story-card" data-step="0" data-title="Origin">
+            <button class="story-card-button" type="button" data-modal="origin">
+              <span class="card-index">01</span>
+              <span class="card-kicker">The starting point</span>
+              <strong>Curiosity with a purpose</strong>
+              <span class="card-summary">Biomedical engineering became the place where my curiosity could improve real lives.</span>
+              <span class="card-action">Open chapter ↗</span>
+            </button>
+          </article>
+
+          <article class="story-card" data-step="1" data-title="KitReady">
+            <button class="story-card-button" type="button" data-modal="kitready">
+              <span class="card-index">02</span>
+              <span class="card-kicker">System design</span>
+              <strong>KitReady</strong>
+              <span class="card-summary">A QR-powered first-aid inventory system that keeps schools prepared.</span>
+              <span class="card-media"><img src="assets/Kitready_Projectimage.jpg" alt=""></span>
+              <span class="card-action">View project ↗</span>
+            </button>
+          </article>
+
+          <article class="story-card" data-step="2" data-title="Launcher">
+            <button class="story-card-button" type="button" data-modal="launcher">
+              <span class="card-index">03</span>
+              <span class="card-kicker">Mechanical prototyping</span>
+              <strong>Train without waiting</strong>
+              <span class="card-summary">A table-tennis launcher designed for consistent, independent practice.</span>
+              <span class="card-media"><img src="assets/TT_Thumbnailimage.jpg" alt=""></span>
+              <span class="card-action">View project ↗</span>
+            </button>
+          </article>
+
+          <article class="story-card" data-step="3" data-title="Heel Haven">
+            <button class="story-card-button" type="button" data-modal="heelhaven">
+              <span class="card-index">04</span>
+              <span class="card-kicker">Patient-centred design</span>
+              <strong>Heel Haven</strong>
+              <span class="card-summary">A breathable heel off-loading concept made to prevent pressure injuries.</span>
+              <span class="card-media"><img src="assets/HH_Thumbnailimage.jpg" alt=""></span>
+              <span class="card-action">View project ↗</span>
+            </button>
+          </article>
+
+          <article class="story-card" data-step="4" data-title="Beyond the Lab">
+            <button class="story-card-button" type="button" data-modal="highlights">
+              <span class="card-index">05</span>
+              <span class="card-kicker">Growth outside projects</span>
+              <strong>Resilience is built together</strong>
+              <span class="card-summary">Basketball, STEM competitions, and leadership shaped how I work with people.</span>
+              <span class="card-action">See highlights ↗</span>
+            </button>
+          </article>
+
+          <article class="story-card" data-step="5" data-title="Next Chapter">
+            <button class="story-card-button" type="button" data-modal="contact">
+              <span class="card-index">06</span>
+              <span class="card-kicker">What comes next</span>
+              <strong>Let’s build something useful.</strong>
+              <span class="card-summary">I’m looking for opportunities to learn, contribute, and create with purpose.</span>
+              <span class="card-action">Contact me ↗</span>
+            </button>
+          </article>
+        </div>
+
+        <div class="stage-progress" aria-hidden="true">
+          <span id="progress-fill"></span>
+        </div>
+      </div>
+
+      <div class="story-spacers" aria-hidden="true">
+        <div class="story-spacer"></div>
+        <div class="story-spacer"></div>
+        <div class="story-spacer"></div>
+        <div class="story-spacer"></div>
+        <div class="story-spacer"></div>
+        <div class="story-spacer"></div>
+      </div>
+    </section>
+
+    <section class="epilogue">
+      <p class="eyebrow">End of this chapter</p>
+      <h2>Still curious.<br>Still building.</h2>
+      <div class="epilogue-links">
+        <a href="mailto:mataslinz@gmail.com">mataslinz@gmail.com</a>
+        <a href="https://www.linkedin.com/in/matthias-ling-4436673a0/">LinkedIn ↗</a>
+        <a href="assets/Resume_CPB.pdf" target="_blank" rel="noopener noreferrer">Résumé ↗</a>
+      </div>
+      <a class="back-to-top" href="#start">Return to the surface ↑</a>
+    </section>
+  </main>
+
+  <div id="detail-modal" class="detail-modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <section class="detail-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" type="button" data-close-modal aria-label="Close details">Close ×</button>
+      <div id="modal-content" class="modal-scroll"></div>
+    </section>
+  </div>
+
+  <template id="modal-origin">
+    <div class="detail-heading">
+      <span class="detail-number">01 — Origin</span>
+      <h2 id="modal-title">Engineering should make life feel easier.</h2>
+    </div>
+    <div class="detail-copy">
+      <p class="detail-lead">I’m a Biomedical Engineering student at Nanyang Polytechnic with a strong interest in practical device design and prototyping.</p>
+      <p>I enjoy taking a real-world frustration, understanding who it affects, and turning it into something useful through iterative design, testing, and clear documentation.</p>
+      <div class="detail-tags">
+        <span>Biomedical device design</span><span>Prototyping</span><span>Python</span><span>JavaScript</span><span>HTML/CSS</span><span>3D modelling</span>
       </div>
     </div>
+  </template>
 
-    <h1 class="typing-heading">I am <span id="typing"></span><span class="cursor">|</span></h1>
-
-    <p class="about-text">
-      I am a Biomedical Engineering student with a passion for making others’ lives easier through innovation.
-      My work focuses on combining technology, creativity, and problem-solving to develop practical solutions
-      that improve everyday life.
-    </p>
-  </section>
-
-  <!-- ====== CONTACT FOOTER ====== -->
-  <footer class="footer-contact">
-    <h2 class="section-title" style="color: var(--secondary); margin-bottom: 1rem;">Contact Me</h2>
-    <div class="contact-buttons">
-      <a href="https://www.linkedin.com/in/matthias-ling-4436673a0/" class="btn-footer">LinkedIn</a>
-      <a href="mailto:your@email.com" class="btn-footer">Email Me</a>
-      <a href="assets/Resume_CPB.pdf" class="btn-footer" target="_blank" rel="noopener noreferrer">View Resume</a>
+  <template id="modal-kitready">
+    <div class="detail-heading">
+      <span class="detail-number">02 — System design</span>
+      <h2 id="modal-title">KitReady</h2>
+      <p class="detail-lead">A digital inventory and alert system for school first-aid supplies.</p>
     </div>
-    <p style="margin-top: 1rem; font-size: var(--step--1);">© 2025 Matthias. All rights reserved.</p>
-  </footer>
+    <div class="detail-gallery">
+      <img src="assets/Kitready_Projectimage.jpg" alt="KitReady project">
+      <img src="assets/Kitready_showcaseimage1.jpg" alt="KitReady QR code and form">
+      <img src="assets/Kitready_showcaseimage2.jpg" alt="KitReady inventory dashboard">
+      <img src="assets/Kitready_showcaseimage3.jpg" alt="KitReady mobile workflow">
+    </div>
+    <div class="detail-copy">
+      <h3>The problem</h3>
+      <p>First-aid kits are often checked manually only during audits or emergencies. That can leave expired, missing, or insufficient items undiscovered until they are needed.</p>
+      <h3>The response</h3>
+      <p>KitReady uses QR codes and a simple online dashboard so staff can log item usage in seconds. Timely low-stock alerts make readiness proactive without adding administrative burden.</p>
+    </div>
+  </template>
+
+  <template id="modal-launcher">
+    <div class="detail-heading">
+      <span class="detail-number">03 — Mechanical prototyping</span>
+      <h2 id="modal-title">Table Tennis Ball Launcher</h2>
+      <p class="detail-lead">A training partner that is ready whenever the player is.</p>
+    </div>
+    <div class="detail-gallery">
+      <img src="assets/TT_showcaseimage.jpg" alt="Table tennis ball launcher">
+      <img src="assets/TT_showcaseimage2.jpg" alt="Launcher mechanism">
+      <img src="assets/TT_showcaseimage3.jpg" alt="Launcher prototype">
+      <img src="assets/TT_showcaseimage4.jpg" alt="Launcher testing">
+    </div>
+    <div class="detail-copy">
+      <h3>The problem</h3>
+      <p>Effective table-tennis training usually requires a partner to return shots, making it difficult to practise timing, accuracy, and stroke control consistently.</p>
+      <h3>The response</h3>
+      <p>Our machine automatically returns balls at controlled speeds and angles, allowing players to practise independently and focus on repeating key skills.</p>
+      <video controls playsinline preload="metadata">
+        <source src="assets/TT_showcasevideo.mp4" type="video/mp4">
+      </video>
+    </div>
+  </template>
+
+  <template id="modal-heelhaven">
+    <div class="detail-heading">
+      <span class="detail-number">04 — Patient-centred design</span>
+      <h2 id="modal-title">Heel Haven</h2>
+      <p class="detail-lead">Pressure relief designed around comfort, airflow, and stability.</p>
+    </div>
+    <div class="detail-gallery">
+      <img src="assets/HH_showcaseimage.jpg" alt="Heel Haven prototype">
+      <img src="assets/HH_showcaseimage2.jpg" alt="Heel Haven design detail">
+      <img src="assets/HH_showcaseimage3.jpg" alt="Heel Haven testing">
+      <img src="assets/HH_showcaseimage4.jpg" alt="Heel Haven final concept">
+      <img src="assets/HH_showcaseposter.jpg" alt="Heel Haven project poster">
+    </div>
+    <div class="detail-copy">
+      <h3>The problem</h3>
+      <p>Prolonged heel pressure is a major contributor to pressure injuries in bed-bound or immobile patients.</p>
+      <h3>The response</h3>
+      <p>Heel Haven fully elevates the heel while maintaining comfort and stability. Its lightweight, breathable structure improves airflow and reduces heat and moisture build-up.</p>
+    </div>
+  </template>
+
+  <template id="modal-highlights">
+    <div class="detail-heading">
+      <span class="detail-number">05 — Beyond the lab</span>
+      <h2 id="modal-title">The work shaped me. So did the team.</h2>
+    </div>
+    <div class="milestone-list">
+      <article>
+        <span>STEM</span>
+        <h3>Six competition experiences</h3>
+        <p>2× Singapore Junior Biology Olympiad, 2× Singapore Junior Chemistry Olympiad, International Biomedical Quiz, and the VJC Amazing Race.</p>
+      </article>
+      <article>
+        <span>SPORT</span>
+        <h3>Three National School Games seasons</h3>
+        <p>Basketball taught me resilience, trust, and how to stay optimistic through trials and setbacks.</p>
+      </article>
+      <article>
+        <span>LEADERSHIP</span>
+        <h3>CCA Executive Committee</h3>
+        <p>Planning and coordinating with a team strengthened my confidence and ability to communicate clearly.</p>
+      </article>
+    </div>
+  </template>
+
+  <template id="modal-contact">
+    <div class="detail-heading">
+      <span class="detail-number">06 — Next chapter</span>
+      <h2 id="modal-title">Have a problem worth solving?</h2>
+      <p class="detail-lead">I’d love to hear about it.</p>
+    </div>
+    <div class="contact-grid">
+      <a href="mailto:mataslinz@gmail.com"><span>Email</span><strong>mataslinz@gmail.com</strong><b>↗</b></a>
+      <a href="https://www.linkedin.com/in/matthias-ling-4436673a0/"><span>Connect</span><strong>LinkedIn</strong><b>↗</b></a>
+      <a href="assets/Resume_CPB.pdf" target="_blank" rel="noopener noreferrer"><span>Background</span><strong>View résumé</strong><b>↗</b></a>
+    </div>
+  </template>
 
   <script src="script.js"></script>
 </body>
