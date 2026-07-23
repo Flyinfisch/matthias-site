@@ -23,11 +23,13 @@ body {
   font-family: "Manrope", sans-serif;
   overflow-x: hidden;
   transition: background 300ms ease, color 300ms ease;
+  isolation: isolate;
 }
 body.modal-open { overflow: hidden; }
 button, a { color: inherit; }
 button { font: inherit; }
 img, video { display: block; max-width: 100%; }
+main { position: relative; z-index: 1; }
 
 .site-header {
   position: fixed;
@@ -72,11 +74,21 @@ img, video { display: block; max-width: 100%; }
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  border-bottom: 1px solid var(--line);
-  background:
-    radial-gradient(ellipse at 78% 20%, rgba(119, 72, 211, .23), transparent 34%),
-    radial-gradient(ellipse at 14% 76%, rgba(33, 167, 210, .14), transparent 36%);
+  border-bottom: 0;
+  background: transparent;
 }
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 28vh;
+  pointer-events: none;
+  background: transparent;
+}
+.hero > * { z-index: 1; }
 .hero-grid {
   position: absolute;
   inset: 76px 0 0;
@@ -150,71 +162,44 @@ img, video { display: block; max-width: 100%; }
 }
 @keyframes scan { 50% { transform: translateX(48px); } }
 
-.story { position: relative; }
+.story {
+  position: relative;
+  margin-top: -1px;
+  background: transparent;
+}
 .story-stage {
   position: sticky;
   top: 0;
   height: 100svh;
   overflow: hidden;
   perspective: 1100px;
-  background:
-    radial-gradient(ellipse at 50% 50%, rgba(113, 73, 255, .14), transparent 42%),
-    linear-gradient(180deg, #050611, #080817 48%, #050611);
+  background: transparent;
 }
 .story-stage::before {
-  content: "";
-  position: absolute;
-  inset: 8% -20%;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse at center, rgba(225, 231, 255, .18) 0 2%, rgba(113, 174, 255, .12) 8%, rgba(138, 66, 255, .09) 20%, transparent 58%);
-  filter: blur(20px);
-  transform: scaleX(1.15);
+  display: none;
 }
 .story-stage::after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  inset: 14% 6%;
-  pointer-events: none;
-  opacity: .5;
-  background:
-    repeating-conic-gradient(
-      from 8deg at 50% 50%,
-      transparent 0deg 7deg,
-      rgba(118, 221, 255, .12) 8deg,
-      transparent 10deg 19deg,
-      rgba(181, 120, 255, .1) 20deg,
-      transparent 22deg 34deg
-    );
-  mask-image: radial-gradient(circle at center, #000 0 8%, rgba(0,0,0,.8) 24%, transparent 66%);
-  -webkit-mask-image: radial-gradient(circle at center, #000 0 8%, rgba(0,0,0,.8) 24%, transparent 66%);
-  filter: blur(8px);
-  animation: burst-breathe 7s ease-in-out infinite alternate;
+  display: none;
 }
 .story-spacer { height: 90vh; }
 .atmosphere {
-  position: absolute;
-  width: 36vw;
-  height: 36vw;
-  border-radius: 50%;
-  filter: blur(90px);
-  opacity: .2;
-  background: var(--signal);
+  display: none;
 }
 .atmosphere-one { top: -16vw; left: -12vw; }
 .atmosphere-two { right: -18vw; bottom: -18vw; }
+.galaxy-canvas {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: .92;
+}
 
 .pillar {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: clamp(760px, 112vw, 1500px);
-  height: clamp(760px, 112vw, 1500px);
-  transform: translate(-50%, -50%);
-  filter:
-    drop-shadow(0 0 45px rgba(111, 89, 255, .2))
-    drop-shadow(0 0 120px rgba(48, 215, 255, .12));
+  display: none;
 }
 .pillar-body {
   position: absolute;
@@ -301,7 +286,7 @@ img, video { display: block; max-width: 100%; }
 
 .orbit {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   inset: 0;
   transform-style: preserve-3d;
   pointer-events: none;
@@ -314,7 +299,7 @@ img, video { display: block; max-width: 100%; }
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(390px, 31vw);
+  width: min(560px, 43vw);
   transform: translate(-50%, -50%) translate3d(var(--x), var(--y), var(--depth)) scale(var(--scale));
   opacity: var(--opacity, 0);
   filter: blur(var(--blur, 0px));
@@ -326,8 +311,8 @@ img, video { display: block; max-width: 100%; }
 .story-card-button {
   position: relative;
   width: 100%;
-  min-height: 280px;
-  padding: 1.35rem;
+  min-height: 370px;
+  padding: 1.8rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -365,14 +350,14 @@ img, video { display: block; max-width: 100%; }
 }
 .card-kicker { color: var(--muted); }
 .story-card strong {
-  max-width: 90%;
-  font-size: clamp(1.5rem, 2.2vw, 2.15rem);
+  max-width: 82%;
+  font-size: clamp(2rem, 3vw, 3rem);
   line-height: 1.02;
   letter-spacing: -.04em;
 }
 .card-summary {
-  max-width: 32ch;
-  font-size: .95rem;
+  max-width: 38ch;
+  font-size: 1.08rem;
   line-height: 1.55;
 }
 .card-action {
@@ -384,7 +369,7 @@ img, video { display: block; max-width: 100%; }
   position: absolute;
   right: -9%;
   bottom: -13%;
-  width: 48%;
+  width: 54%;
   aspect-ratio: 1;
   border-radius: 50%;
   overflow: hidden;
@@ -408,16 +393,20 @@ img, video { display: block; max-width: 100%; }
 }
 
 .epilogue {
+  position: relative;
+  overflow: hidden;
   min-height: 100svh;
   padding: 15vh 7vw 8vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 1px solid var(--line);
-  background:
-    radial-gradient(ellipse at 78% 26%, rgba(138, 73, 255, .2), transparent 36%),
-    radial-gradient(ellipse at 16% 82%, rgba(29, 184, 222, .12), transparent 38%);
+  border-top: 0;
+  background: transparent;
 }
+.epilogue::before {
+  display: none;
+}
+.epilogue > * { position: relative; z-index: 1; }
 .epilogue h2 {
   margin: 0;
   font-size: clamp(3.8rem, 9vw, 9rem);
@@ -557,10 +546,10 @@ img, video { display: block; max-width: 100%; }
     opacity: .96;
   }
   .orbit-label { display: none; }
-  .story-card { width: min(286px, 74vw); }
-  .story-card-button { min-height: 250px; padding: 1rem; }
-  .story-card strong { font-size: 1.55rem; }
-  .card-summary { font-size: .86rem; }
+  .story-card { width: min(342px, 88vw); }
+  .story-card-button { min-height: 320px; padding: 1.25rem; }
+  .story-card strong { font-size: 2rem; }
+  .card-summary { max-width: 30ch; font-size: .96rem; }
   .stage-progress { right: 10px; }
   .epilogue { padding-inline: 20px; }
   .epilogue h2 { font-size: clamp(3.6rem, 18vw, 6rem); }
