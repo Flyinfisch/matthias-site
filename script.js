@@ -1,5 +1,3 @@
-const root = document.documentElement;
-const themeButton = document.querySelector("#mode-toggle");
 const story = document.querySelector(".story");
 const stage = document.querySelector(".story-stage");
 const pillar = document.querySelector(".pillar-body");
@@ -15,16 +13,6 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let activeIndex = 0;
 let lastFocused = null;
 let ticking = false;
-
-function setTheme(theme) {
-  root.dataset.theme = theme;
-  localStorage.setItem("theme", theme);
-  themeButton.textContent = theme === "dark" ? "☀" : "◐";
-  themeButton.setAttribute("aria-label", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
-}
-
-setTheme(localStorage.getItem("theme") || "light");
-themeButton.addEventListener("click", () => setTheme(root.dataset.theme === "dark" ? "light" : "dark"));
 
 function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value));
